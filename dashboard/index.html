@@ -213,6 +213,93 @@
             height: 100%;
         }
 
+        /* CUSTOMER SATISFACTION */
+
+        .satisfaction-chart {
+            height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .satisfaction-score {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .satisfaction-score .number {
+            font-size: 46px;
+            font-weight: 700;
+        }
+
+        .satisfaction-score .label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .review-row {
+            margin-bottom: 22px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .review-name {
+            color: #4b5563;
+        }
+
+        .review-score {
+            font-weight: 700;
+        }
+
+        .review-bar-background {
+            width: 100%;
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .review-bar {
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .review-on-time {
+            width: 85.8%;
+            background: #2563eb;
+        }
+
+        .review-late {
+            width: 51.4%;
+            background: #9ca3af;
+        }
+
+        .positive-reviews {
+            margin-top: 12px;
+            padding: 14px;
+            background: #f9fafb;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .positive-reviews .percentage {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .positive-reviews .text {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 3px;
+        }
+
         /* PLACEHOLDER */
 
         .placeholder {
@@ -440,9 +527,79 @@
                     Average review score by delivery performance
                 </p>
 
-                <div class="placeholder">
+                <div class="satisfaction-chart">
 
-                    Review chart will go here
+
+                    <div class="satisfaction-score">
+
+                        <div class="number">
+                            4.09
+                        </div>
+
+                        <div class="label">
+                            Overall average review score
+                        </div>
+
+                    </div>
+
+
+                    <div class="review-row">
+
+                        <div class="review-header">
+
+                            <span class="review-name">
+                                On Time / Early
+                            </span>
+
+                            <span class="review-score">
+                                4.29 / 5
+                            </span>
+
+                        </div>
+
+                        <div class="review-bar-background">
+
+                            <div class="review-bar review-on-time"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="review-row">
+
+                        <div class="review-header">
+
+                            <span class="review-name">
+                                Late
+                            </span>
+
+                            <span class="review-score">
+                                2.57 / 5
+                            </span>
+
+                        </div>
+
+                        <div class="review-bar-background">
+
+                            <div class="review-bar review-late"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="positive-reviews">
+
+                        <div class="percentage">
+                            77.07%
+                        </div>
+
+                        <div class="text">
+                            Positive reviews · 4–5 stars
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -583,8 +740,6 @@
         }
 
 
-        /* REVENUE GRID */
-
         for (let i = 0; i <= 4; i++) {
 
             const value =
@@ -620,8 +775,6 @@
         }
 
 
-        /* REVENUE LINE */
-
         const revenuePoints =
             monthlyRevenue
 
@@ -647,8 +800,6 @@
         `;
 
 
-        /* REVENUE DATA POINTS */
-
         monthlyRevenue.forEach(
             (item, index) => {
 
@@ -666,8 +817,6 @@
             }
         );
 
-
-        /* REVENUE X LABELS */
 
         monthlyRevenue.forEach(
             (item, index) => {
@@ -769,8 +918,6 @@
 
                 const revenue = category[1];
 
-                const percentage = category[2];
-
 
                 const y =
                     categoryPadding.top +
@@ -782,8 +929,6 @@
                     (revenue / maxCategoryRevenue) *
                     categoryChartWidth;
 
-
-                /* CATEGORY LABEL */
 
                 categorySvg.innerHTML += `
 
@@ -800,8 +945,6 @@
                 `;
 
 
-                /* BACKGROUND BAR */
-
                 categorySvg.innerHTML += `
 
                     <rect
@@ -816,8 +959,6 @@
                 `;
 
 
-                /* REVENUE BAR */
-
                 categorySvg.innerHTML += `
 
                     <rect
@@ -831,8 +972,6 @@
 
                 `;
 
-
-                /* REVENUE VALUE */
 
                 categorySvg.innerHTML += `
 

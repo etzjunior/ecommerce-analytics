@@ -119,6 +119,99 @@
             height: 100%;
         }
 
+        /* DELIVERY */
+
+        .delivery-chart {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .delivery-summary {
+            margin-bottom: 24px;
+        }
+
+        .delivery-total {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .delivery-percentage {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .delivery-bar {
+            width: 100%;
+            height: 14px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 22px;
+        }
+
+        .on-time-bar {
+            width: 53.47%;
+            background: #2563eb;
+        }
+
+        .late-bar {
+            width: 46.53%;
+            background: #d1d5db;
+        }
+
+        .delivery-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        .delivery-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4b5563;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-blue {
+            background: #2563eb;
+        }
+
+        .dot-gray {
+            background: #d1d5db;
+        }
+
+        .delivery-value {
+            font-weight: 600;
+            color: #17181a;
+        }
+
+        .delivery-insight {
+            margin-top: 18px;
+            padding: 14px;
+            background: #f9fafb;
+            border-radius: 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #6b7280;
+        }
+
+        .delivery-insight strong {
+            color: #17181a;
+        }
+
         /* RESPONSIVE */
 
         @media (max-width: 900px) {
@@ -169,54 +262,23 @@
         <section class="kpi-grid">
 
             <div class="kpi">
-
-                <div class="kpi-label">
-                    Total Revenue
-                </div>
-
-                <div class="kpi-value">
-                    R$13.59M
-                </div>
-
+                <div class="kpi-label">Total Revenue</div>
+                <div class="kpi-value">R$13.59M</div>
             </div>
 
-
             <div class="kpi">
-
-                <div class="kpi-label">
-                    Total Orders
-                </div>
-
-                <div class="kpi-value">
-                    99,441
-                </div>
-
+                <div class="kpi-label">Total Orders</div>
+                <div class="kpi-value">99,441</div>
             </div>
 
-
             <div class="kpi">
-
-                <div class="kpi-label">
-                    Average Order Value
-                </div>
-
-                <div class="kpi-value">
-                    R$136.68
-                </div>
-
+                <div class="kpi-label">Average Order Value</div>
+                <div class="kpi-value">R$136.68</div>
             </div>
 
-
             <div class="kpi">
-
-                <div class="kpi-label">
-                    Average Review
-                </div>
-
-                <div class="kpi-value">
-                    4.09 / 5
-                </div>
-
+                <div class="kpi-label">Average Review</div>
+                <div class="kpi-value">4.09 / 5</div>
             </div>
 
         </section>
@@ -231,20 +293,16 @@
 
             <div class="card">
 
-                <h2>
-                    Revenue Over Time
-                </h2>
+                <h2>Revenue Over Time</h2>
 
-                <p>
-                    Monthly product revenue
-                </p>
+                <p>Monthly product revenue</p>
 
                 <div class="revenue-chart">
 
                     <svg
                         id="revenueChart"
-                        viewBox="0 0 900 320"
-                    ></svg>
+                        viewBox="0 0 900 320">
+                    </svg>
 
                 </div>
 
@@ -255,17 +313,77 @@
 
             <div class="card">
 
-                <h2>
-                    Delivery Performance
-                </h2>
+                <h2>Delivery Performance</h2>
 
-                <p>
-                    Order delivery status
-                </p>
+                <p>Order delivery status</p>
 
-                <div class="placeholder">
+                <div class="delivery-chart">
 
-                    Delivery chart will go here
+                    <div class="delivery-summary">
+
+                        <div class="delivery-total">
+                            Orders delivered on time or early
+                        </div>
+
+                        <div class="delivery-percentage">
+                            53.47%
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-bar">
+
+                        <div class="on-time-bar"></div>
+
+                        <div class="late-bar"></div>
+
+                    </div>
+
+
+                    <div class="delivery-row">
+
+                        <div class="delivery-label">
+
+                            <span class="dot dot-blue"></span>
+
+                            On Time / Early
+
+                        </div>
+
+                        <div class="delivery-value">
+                            88,653 · 53.47%
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-row">
+
+                        <div class="delivery-label">
+
+                            <span class="dot dot-gray"></span>
+
+                            Late
+
+                        </div>
+
+                        <div class="delivery-value">
+                            77,002 · 46.53%
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-insight">
+
+                        Late deliveries received an average review of
+                        <strong>2.57 / 5</strong>,
+                        compared with
+                        <strong>4.29 / 5</strong>
+                        for on-time or early deliveries.
+
+                    </div>
 
                 </div>
 
@@ -283,13 +401,9 @@
 
             <div class="card">
 
-                <h2>
-                    Top Product Categories
-                </h2>
+                <h2>Top Product Categories</h2>
 
-                <p>
-                    Highest revenue-generating categories
-                </p>
+                <p>Highest revenue-generating categories</p>
 
                 <div class="placeholder">
 
@@ -304,13 +418,9 @@
 
             <div class="card">
 
-                <h2>
-                    Customer Satisfaction
-                </h2>
+                <h2>Customer Satisfaction</h2>
 
-                <p>
-                    Average review score by delivery performance
-                </p>
+                <p>Average review score by delivery performance</p>
 
                 <div class="placeholder">
 
@@ -327,9 +437,7 @@
 
         <section class="card">
 
-            <h2>
-                Revenue by State
-            </h2>
+            <h2>Revenue by State</h2>
 
             <p>
                 Top Brazilian states by product revenue
@@ -346,7 +454,7 @@
     </main>
 
 
-    <!-- REVENUE CHART -->
+    <!-- REVENUE DATA -->
 
     <script>
 
@@ -395,11 +503,8 @@
         const padding = {
 
             top: 25,
-
             right: 25,
-
             bottom: 55,
-
             left: 65
 
         };
@@ -428,12 +533,10 @@
         function x(index) {
 
             return padding.left +
-
                 (
                     index /
                     (monthlyRevenue.length - 1)
                 ) *
-
                 chartWidth;
 
         }
@@ -442,22 +545,17 @@
         function y(value) {
 
             return padding.top +
-
                 chartHeight -
-
                 (
                     value /
                     maxRevenue
                 ) *
-
                 chartHeight;
 
         }
 
 
-        /*
-         * Y-AXIS GRID LINES
-         */
+        /* Y-AXIS GRID LINES */
 
         for (let i = 0; i <= 4; i++) {
 
@@ -494,9 +592,7 @@
         }
 
 
-        /*
-         * REVENUE LINE
-         */
+        /* REVENUE LINE */
 
         const points = monthlyRevenue
 
@@ -522,9 +618,7 @@
         `;
 
 
-        /*
-         * DATA POINTS
-         */
+        /* DATA POINTS */
 
         monthlyRevenue.forEach(
             (item, index) => {
@@ -544,9 +638,7 @@
         );
 
 
-        /*
-         * X-AXIS LABELS
-         */
+        /* X-AXIS LABELS */
 
         monthlyRevenue.forEach(
             (item, index) => {

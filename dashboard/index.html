@@ -94,18 +94,6 @@
             margin-bottom: 20px;
         }
 
-        /* PLACEHOLDERS */
-
-        .placeholder {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f9fafb;
-            border-radius: 10px;
-            color: #9ca3af;
-        }
-
         /* REVENUE CHART */
 
         .revenue-chart {
@@ -210,6 +198,31 @@
 
         .delivery-insight strong {
             color: #17181a;
+        }
+
+        /* CATEGORY CHART */
+
+        .category-chart {
+            height: 360px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .category-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* PLACEHOLDER */
+
+        .placeholder {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9fafb;
+            border-radius: 10px;
+            color: #9ca3af;
         }
 
         /* RESPONSIVE */
@@ -405,9 +418,12 @@
 
                 <p>Highest revenue-generating categories</p>
 
-                <div class="placeholder">
+                <div class="category-chart">
 
-                    Category chart will go here
+                    <svg
+                        id="categoryChart"
+                        viewBox="0 0 900 360">
+                    </svg>
 
                 </div>
 
@@ -420,7 +436,9 @@
 
                 <h2>Customer Satisfaction</h2>
 
-                <p>Average review score by delivery performance</p>
+                <p>
+                    Average review score by delivery performance
+                </p>
 
                 <div class="placeholder">
 
@@ -454,9 +472,14 @@
     </main>
 
 
-    <!-- REVENUE DATA -->
+    <!-- JAVASCRIPT -->
+
 
     <script>
+
+        /* =========================================
+           MONTHLY REVENUE
+        ========================================= */
 
         const monthlyRevenue = [
 
@@ -491,16 +514,16 @@
         ];
 
 
-        const svg =
+        const revenueSvg =
             document.getElementById("revenueChart");
 
 
-        const width = 900;
+        const revenueWidth = 900;
 
-        const height = 320;
+        const revenueHeight = 320;
 
 
-        const padding = {
+        const revenuePadding = {
 
             top: 25,
             right: 25,
@@ -510,16 +533,16 @@
         };
 
 
-        const chartWidth =
-            width -
-            padding.left -
-            padding.right;
+        const revenueChartWidth =
+            revenueWidth -
+            revenuePadding.left -
+            revenuePadding.right;
 
 
-        const chartHeight =
-            height -
-            padding.top -
-            padding.bottom;
+        const revenueChartHeight =
+            revenueHeight -
+            revenuePadding.top -
+            revenuePadding.bottom;
 
 
         const maxRevenue =
@@ -530,32 +553,37 @@
             );
 
 
-        function x(index) {
+        function revenueX(index) {
 
-            return padding.left +
+            return revenuePadding.left +
+
                 (
                     index /
                     (monthlyRevenue.length - 1)
                 ) *
-                chartWidth;
+
+                revenueChartWidth;
 
         }
 
 
-        function y(value) {
+        function revenueY(value) {
 
-            return padding.top +
-                chartHeight -
+            return revenuePadding.top +
+
+                revenueChartHeight -
+
                 (
                     value /
                     maxRevenue
                 ) *
-                chartHeight;
+
+                revenueChartHeight;
 
         }
 
 
-        /* Y-AXIS GRID LINES */
+        /* REVENUE GRID */
 
         for (let i = 0; i <= 4; i++) {
 
@@ -564,21 +592,21 @@
                 (i / 4);
 
             const yPosition =
-                y(value);
+                revenueY(value);
 
 
-            svg.innerHTML += `
+            revenueSvg.innerHTML += `
 
                 <line
-                    x1="${padding.left}"
+                    x1="${revenuePadding.left}"
                     y1="${yPosition}"
-                    x2="${width - padding.right}"
+                    x2="${revenueWidth - revenuePadding.right}"
                     y2="${yPosition}"
                     stroke="#e5e7eb"
                 />
 
                 <text
-                    x="${padding.left - 10}"
+                    x="${revenuePadding.left - 10}"
                     y="${yPosition + 5}"
                     text-anchor="end"
                     font-size="11"
@@ -594,20 +622,21 @@
 
         /* REVENUE LINE */
 
-        const points = monthlyRevenue
+        const revenuePoints =
+            monthlyRevenue
 
-            .map(
-                (item, index) =>
-                    `${x(index)},${y(item[1])}`
-            )
+                .map(
+                    (item, index) =>
+                        `${revenueX(index)},${revenueY(item[1])}`
+                )
 
-            .join(" ");
+                .join(" ");
 
 
-        svg.innerHTML += `
+        revenueSvg.innerHTML += `
 
             <polyline
-                points="${points}"
+                points="${revenuePoints}"
                 fill="none"
                 stroke="#2563eb"
                 stroke-width="3"
@@ -618,16 +647,16 @@
         `;
 
 
-        /* DATA POINTS */
+        /* REVENUE DATA POINTS */
 
         monthlyRevenue.forEach(
             (item, index) => {
 
-                svg.innerHTML += `
+                revenueSvg.innerHTML += `
 
                     <circle
-                        cx="${x(index)}"
-                        cy="${y(item[1])}"
+                        cx="${revenueX(index)}"
+                        cy="${revenueY(item[1])}"
                         r="4"
                         fill="#2563eb"
                     />
@@ -638,7 +667,7 @@
         );
 
 
-        /* X-AXIS LABELS */
+        /* REVENUE X LABELS */
 
         monthlyRevenue.forEach(
             (item, index) => {
@@ -648,19 +677,19 @@
                     index === monthlyRevenue.length - 1
                 ) {
 
-                    svg.innerHTML += `
+                    revenueSvg.innerHTML += `
 
                         <text
-                            x="${x(index)}"
-                            y="${height - 18}"
+                            x="${revenueX(index)}"
+                            y="${revenueHeight - 18}"
                             text-anchor="middle"
                             font-size="10"
                             fill="#6b7280"
                             transform="
                                 rotate(
                                     -35
-                                    ${x(index)}
-                                    ${height - 18}
+                                    ${revenueX(index)}
+                                    ${revenueHeight - 18}
                                 )
                             "
                         >
@@ -670,6 +699,153 @@
                     `;
 
                 }
+
+            }
+        );
+
+
+        /* =========================================
+           PRODUCT CATEGORIES
+        ========================================= */
+
+        const categories = [
+
+            ["Health & Beauty", 1258681.34, 9.384664],
+            ["Watches & Gifts", 1205005.68, 8.984461],
+            ["Bed / Bath / Table", 1036988.68, 7.731735],
+            ["Sports & Leisure", 988048.97, 7.366843],
+            ["Computers & Accessories", 911954.32, 6.799485],
+            ["Furniture & Decor", 729762.49, 5.441072],
+            ["Cool Stuff", 635290.85, 4.736696],
+            ["Housewares", 632248.66, 4.714014],
+            ["Auto", 592720.11, 4.419291],
+            ["Garden Tools", 485256.46, 3.618048]
+
+        ];
+
+
+        const categorySvg =
+            document.getElementById("categoryChart");
+
+
+        const categoryWidth = 900;
+
+        const categoryHeight = 360;
+
+
+        const categoryPadding = {
+
+            top: 10,
+            right: 80,
+            bottom: 10,
+            left: 180
+
+        };
+
+
+        const categoryChartWidth =
+            categoryWidth -
+            categoryPadding.left -
+            categoryPadding.right;
+
+
+        const barHeight = 20;
+
+        const barGap = 14;
+
+
+        const maxCategoryRevenue =
+            Math.max(
+                ...categories.map(
+                    item => item[1]
+                )
+            );
+
+
+        categories.forEach(
+            (category, index) => {
+
+                const name = category[0];
+
+                const revenue = category[1];
+
+                const percentage = category[2];
+
+
+                const y =
+                    categoryPadding.top +
+                    index *
+                    (barHeight + barGap);
+
+
+                const barWidth =
+                    (revenue / maxCategoryRevenue) *
+                    categoryChartWidth;
+
+
+                /* CATEGORY LABEL */
+
+                categorySvg.innerHTML += `
+
+                    <text
+                        x="${categoryPadding.left - 12}"
+                        y="${y + barHeight / 2 + 4}"
+                        text-anchor="end"
+                        font-size="12"
+                        fill="#4b5563"
+                    >
+                        ${name}
+                    </text>
+
+                `;
+
+
+                /* BACKGROUND BAR */
+
+                categorySvg.innerHTML += `
+
+                    <rect
+                        x="${categoryPadding.left}"
+                        y="${y}"
+                        width="${categoryChartWidth}"
+                        height="${barHeight}"
+                        rx="5"
+                        fill="#f1f3f5"
+                    />
+
+                `;
+
+
+                /* REVENUE BAR */
+
+                categorySvg.innerHTML += `
+
+                    <rect
+                        x="${categoryPadding.left}"
+                        y="${y}"
+                        width="${barWidth}"
+                        height="${barHeight}"
+                        rx="5"
+                        fill="#2563eb"
+                    />
+
+                `;
+
+
+                /* REVENUE VALUE */
+
+                categorySvg.innerHTML += `
+
+                    <text
+                        x="${categoryPadding.left + barWidth + 8}"
+                        y="${y + barHeight / 2 + 4}"
+                        font-size="11"
+                        fill="#6b7280"
+                    >
+                        R$${(revenue / 1000000).toFixed(2)}M
+                    </text>
+
+                `;
 
             }
         );

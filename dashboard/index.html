@@ -300,16 +300,17 @@
             margin-top: 3px;
         }
 
-        /* PLACEHOLDER */
+        /* STATE CHART */
 
-        .placeholder {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f9fafb;
-            border-radius: 10px;
-            color: #9ca3af;
+        .state-chart {
+            height: 430px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .state-chart svg {
+            width: 100%;
+            height: 100%;
         }
 
         /* RESPONSIVE */
@@ -387,7 +388,6 @@
         <!-- FIRST ROW -->
 
         <section class="grid">
-
 
             <!-- REVENUE -->
 
@@ -496,14 +496,15 @@
 
         <section class="grid">
 
-
             <!-- CATEGORIES -->
 
             <div class="card">
 
                 <h2>Top Product Categories</h2>
 
-                <p>Highest revenue-generating categories</p>
+                <p>
+                    Highest revenue-generating categories
+                </p>
 
                 <div class="category-chart">
 
@@ -528,7 +529,6 @@
                 </p>
 
                 <div class="satisfaction-chart">
-
 
                     <div class="satisfaction-score">
 
@@ -618,18 +618,18 @@
                 Top Brazilian states by product revenue
             </p>
 
-            <div class="placeholder">
+            <div class="state-chart">
 
-                Geographic visualization will go here
+                <svg
+                    id="stateChart"
+                    viewBox="0 0 1000 430">
+                </svg>
 
             </div>
 
         </section>
 
     </main>
-
-
-    <!-- JAVASCRIPT -->
 
 
     <script>
@@ -674,33 +674,25 @@
         const revenueSvg =
             document.getElementById("revenueChart");
 
-
         const revenueWidth = 900;
-
         const revenueHeight = 320;
 
-
         const revenuePadding = {
-
             top: 25,
             right: 25,
             bottom: 55,
             left: 65
-
         };
-
 
         const revenueChartWidth =
             revenueWidth -
             revenuePadding.left -
             revenuePadding.right;
 
-
         const revenueChartHeight =
             revenueHeight -
             revenuePadding.top -
             revenuePadding.bottom;
-
 
         const maxRevenue =
             Math.max(
@@ -713,12 +705,10 @@
         function revenueX(index) {
 
             return revenuePadding.left +
-
                 (
                     index /
                     (monthlyRevenue.length - 1)
                 ) *
-
                 revenueChartWidth;
 
         }
@@ -727,14 +717,11 @@
         function revenueY(value) {
 
             return revenuePadding.top +
-
                 revenueChartHeight -
-
                 (
                     value /
                     maxRevenue
                 ) *
-
                 revenueChartHeight;
 
         }
@@ -748,7 +735,6 @@
 
             const yPosition =
                 revenueY(value);
-
 
             revenueSvg.innerHTML += `
 
@@ -777,12 +763,10 @@
 
         const revenuePoints =
             monthlyRevenue
-
                 .map(
                     (item, index) =>
                         `${revenueX(index)},${revenueY(item[1])}`
                 )
-
                 .join(" ");
 
 
@@ -859,16 +843,16 @@
 
         const categories = [
 
-            ["Health & Beauty", 1258681.34, 9.384664],
-            ["Watches & Gifts", 1205005.68, 8.984461],
-            ["Bed / Bath / Table", 1036988.68, 7.731735],
-            ["Sports & Leisure", 988048.97, 7.366843],
-            ["Computers & Accessories", 911954.32, 6.799485],
-            ["Furniture & Decor", 729762.49, 5.441072],
-            ["Cool Stuff", 635290.85, 4.736696],
-            ["Housewares", 632248.66, 4.714014],
-            ["Auto", 592720.11, 4.419291],
-            ["Garden Tools", 485256.46, 3.618048]
+            ["Health & Beauty", 1258681.34],
+            ["Watches & Gifts", 1205005.68],
+            ["Bed / Bath / Table", 1036988.68],
+            ["Sports & Leisure", 988048.97],
+            ["Computers & Accessories", 911954.32],
+            ["Furniture & Decor", 729762.49],
+            ["Cool Stuff", 635290.85],
+            ["Housewares", 632248.66],
+            ["Auto", 592720.11],
+            ["Garden Tools", 485256.46]
 
         ];
 
@@ -876,32 +860,23 @@
         const categorySvg =
             document.getElementById("categoryChart");
 
-
         const categoryWidth = 900;
-
         const categoryHeight = 360;
 
-
         const categoryPadding = {
-
             top: 10,
             right: 80,
             bottom: 10,
             left: 180
-
         };
-
 
         const categoryChartWidth =
             categoryWidth -
             categoryPadding.left -
             categoryPadding.right;
 
-
         const barHeight = 20;
-
         const barGap = 14;
-
 
         const maxCategoryRevenue =
             Math.max(
@@ -915,18 +890,18 @@
             (category, index) => {
 
                 const name = category[0];
-
                 const revenue = category[1];
-
 
                 const y =
                     categoryPadding.top +
                     index *
                     (barHeight + barGap);
 
-
                 const barWidth =
-                    (revenue / maxCategoryRevenue) *
+                    (
+                        revenue /
+                        maxCategoryRevenue
+                    ) *
                     categoryChartWidth;
 
 
@@ -979,6 +954,143 @@
                         x="${categoryPadding.left + barWidth + 8}"
                         y="${y + barHeight / 2 + 4}"
                         font-size="11"
+                        fill="#6b7280"
+                    >
+                        R$${(revenue / 1000000).toFixed(2)}M
+                    </text>
+
+                `;
+
+            }
+        );
+
+
+        /* =========================================
+           REVENUE BY STATE
+        ========================================= */
+
+        const stateRevenue = [
+
+            ["SP", 5029555.05],
+            ["RJ", 1824092.67],
+            ["MG", 1585308.03],
+            ["RS", 675304.02],
+            ["PR", 683083.76],
+            ["SC", 520553.34],
+            ["BA", 511349.99],
+            ["DF", 302603.94],
+            ["GO", 294591.95],
+            ["ES", 275037.31]
+
+        ];
+
+
+        const stateSvg =
+            document.getElementById("stateChart");
+
+        const stateWidth = 1000;
+        const stateHeight = 430;
+
+        const statePadding = {
+            top: 15,
+            right: 120,
+            bottom: 15,
+            left: 80
+        };
+
+        const stateChartWidth =
+            stateWidth -
+            statePadding.left -
+            statePadding.right;
+
+        const stateBarHeight = 27;
+        const stateBarGap = 13;
+
+        const maxStateRevenue =
+            Math.max(
+                ...stateRevenue.map(
+                    item => item[1]
+                )
+            );
+
+
+        stateRevenue.forEach(
+            (state, index) => {
+
+                const name = state[0];
+                const revenue = state[1];
+
+                const y =
+                    statePadding.top +
+                    index *
+                    (stateBarHeight + stateBarGap);
+
+                const barWidth =
+                    (
+                        revenue /
+                        maxStateRevenue
+                    ) *
+                    stateChartWidth;
+
+
+                /* STATE LABEL */
+
+                stateSvg.innerHTML += `
+
+                    <text
+                        x="${statePadding.left - 18}"
+                        y="${y + stateBarHeight / 2 + 5}"
+                        text-anchor="end"
+                        font-size="14"
+                        font-weight="600"
+                        fill="#374151"
+                    >
+                        ${name}
+                    </text>
+
+                `;
+
+
+                /* BACKGROUND */
+
+                stateSvg.innerHTML += `
+
+                    <rect
+                        x="${statePadding.left}"
+                        y="${y}"
+                        width="${stateChartWidth}"
+                        height="${stateBarHeight}"
+                        rx="6"
+                        fill="#f1f3f5"
+                    />
+
+                `;
+
+
+                /* REVENUE BAR */
+
+                stateSvg.innerHTML += `
+
+                    <rect
+                        x="${statePadding.left}"
+                        y="${y}"
+                        width="${barWidth}"
+                        height="${stateBarHeight}"
+                        rx="6"
+                        fill="#2563eb"
+                    />
+
+                `;
+
+
+                /* REVENUE VALUE */
+
+                stateSvg.innerHTML += `
+
+                    <text
+                        x="${statePadding.left + barWidth + 10}"
+                        y="${y + stateBarHeight / 2 + 5}"
+                        font-size="13"
                         fill="#6b7280"
                     >
                         R$${(revenue / 1000000).toFixed(2)}M

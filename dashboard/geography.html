@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Geography · Olist Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="navbar-inner">
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <div class="brand-mark">
+                    OA
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="brand-name">
+                        Olist Analytics
+                    </span>
+
+                    <span class="brand-subtitle">
+                        E-commerce Intelligence
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
+                    Overview
+                </a>
+
+                <a
+                    href="sales.html"
+                    class="nav-link"
+                >
+                    Sales
+                </a>
+
+                <a
+                    href="customers.html"
+                    class="nav-link"
+                >
+                    Customers
+                </a>
+
+                <a
+                    href="geography.html"
+                    class="nav-link active"
+                >
+                    Geography
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1 class="page-title">
+                    Geographic Analysis
+                </h1>
+
+                <p class="page-description">
+                    Revenue, customers and order activity
+                    across Brazilian states.
+                </p>
+
+            </div>
+
+
+            <div class="page-meta">
+                Brazil · Olist marketplace
+            </div>
+
+        </header>
+
+
+        <!-- KPIs -->
+
+        <section class="kpi-grid">
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Leading State
+                    </span>
+
+                    <div class="kpi-icon">
+                        SP
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    R$5.03M
+                </div>
+
+                <div class="kpi-footer kpi-positive">
+                    ● São Paulo revenue
+                </div>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        SP Revenue Share
+                    </span>
+
+                    <div class="kpi-icon">
+                        %
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    37.0%
+                </div>
+
+                <div class="kpi-footer kpi-neutral">
+                    ● Of total product revenue
+                </div>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Top 3 States
+                    </span>
+
+                    <div class="kpi-icon">
+                        3
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    R$8.44M
+                </div>
+
+                <div class="kpi-footer kpi-neutral">
+                    ● SP + RJ + MG
+                </div>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Top 10 Revenue
+                    </span>
+
+                    <div class="kpi-icon">
+                        Σ
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    R$10.70M
+                </div>
+
+                <div class="kpi-footer kpi-neutral">
+                    ● Across leading states
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- MAIN REVENUE CHART -->
+
+        <section
+            class="card"
+            style="margin-bottom:18px;"
+        >
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2 class="card-title">
+                        Revenue by State
+                    </h2>
+
+                    <p class="card-description">
+                        Top Brazilian states ranked by product revenue
+                    </p>
+
+                </div>
+
+
+                <span class="badge badge-blue">
+                    Top 10
+                </span>
+
+            </div>
+
+
+            <div
+                class="chart"
+                style="height:470px;"
+                id="stateRevenueChart"
+            >
+
+                <svg viewBox="0 0 1100 470">
+                </svg>
+
+            </div>
+
+
+            <div class="insight">
+
+                <div class="insight-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <strong>São Paulo</strong>
+                    generated approximately
+                    <strong>R$5.03M</strong>
+                    in product revenue, substantially ahead
+                    of Rio de Janeiro and Minas Gerais.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CUSTOMER + ORDER ACTIVITY -->
+
+        <section class="grid grid-1-1">
+
+
+            <!-- CUSTOMER RANKING -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2 class="card-title">
+                            Customers by State
+                        </h2>
+
+                        <p class="card-description">
+                            Customer distribution across the leading states
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="chart"
+                    style="height:360px;"
+                    id="customerStateChart"
+                >
+
+                    <svg viewBox="0 0 800 360">
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDER RANKING -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2 class="card-title">
+                            Orders by State
+                        </h2>
+
+                        <p class="card-description">
+                            Order volume across the leading states
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="chart"
+                    style="height:360px;"
+                    id="orderStateChart"
+                >
+
+                    <svg viewBox="0 0 800 360">
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- STATE TABLE -->
+
+        <section
+            class="card"
+            style="margin-top:0;"
+        >
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2 class="card-title">
+                        State Performance
+                    </h2>
+
+                    <p class="card-description">
+                        Revenue, customers and orders by state
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Rank
+                            </th>
+
+                            <th>
+                                State
+                            </th>
+
+                            <th>
+                                Revenue
+                            </th>
+
+                            <th>
+                                Customers
+                            </th>
+
+                            <th>
+                                Orders
+                            </th>
+
+                            <th>
+                                Revenue Share
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="stateTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <span>
+            Olist E-commerce Analytics
+        </span>
+
+        <span>
+            Geographic Analysis
+        </span>
+
+    </footer>
+
+
+</div>
+
+
+<script src="js/data.js"></script>
+
+<script src="js/geography.js"></script>
+
+
+</body>
+
+</html>

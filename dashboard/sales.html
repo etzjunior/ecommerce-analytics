@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sales · Olist Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="navbar-inner">
+
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <div class="brand-mark">
+                    OA
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="brand-name">
+                        Olist Analytics
+                    </span>
+
+                    <span class="brand-subtitle">
+                        E-commerce Intelligence
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
+                    Overview
+                </a>
+
+                <a
+                    href="sales.html"
+                    class="nav-link active"
+                >
+                    Sales
+                </a>
+
+                <a
+                    href="customers.html"
+                    class="nav-link"
+                >
+                    Customers
+                </a>
+
+                <a
+                    href="geography.html"
+                    class="nav-link"
+                >
+                    Geography
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1 class="page-title">
+                    Sales Analysis
+                </h1>
+
+                <p class="page-description">
+                    Revenue trends, order performance and
+                    category contribution.
+                </p>
+
+            </div>
+
+
+            <div class="page-meta">
+                Sep 2016 — Oct 2018
+            </div>
+
+        </header>
+
+
+        <!-- KPIs -->
+
+        <section class="kpi-grid">
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Total Revenue
+                    </span>
+
+                    <div class="kpi-icon">
+                        R$
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    R$13.59M
+                </div>
+
+                <div class="kpi-footer kpi-positive">
+                    ● Product revenue
+                </div>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Total Orders
+                    </span>
+
+                    <div class="kpi-icon">
+                        #
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    99,441
+                </div>
+
+                <div class="kpi-footer kpi-neutral">
+                    ● Orders analyzed
+                </div>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Average Order Value
+                    </span>
+
+                    <div class="kpi-icon">
+                        A
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    R$136.68
+                </div>
+
+                <div class="kpi-footer kpi-neutral">
+                    ● Revenue per order
+                </div>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span class="kpi-label">
+                        Peak Revenue Month
+                    </span>
+
+                    <div class="kpi-icon">
+                        ↑
+                    </div>
+
+                </div>
+
+                <div class="kpi-value">
+                    R$1.01M
+                </div>
+
+                <div class="kpi-footer kpi-positive">
+                    ● November 2017
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- REVENUE TREND -->
+
+        <section class="card" style="margin-bottom:18px;">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2 class="card-title">
+                        Monthly Revenue
+                    </h2>
+
+                    <p class="card-description">
+                        Product revenue generated each month
+                    </p>
+
+                </div>
+
+
+                <span class="badge badge-blue">
+                    Revenue trend
+                </span>
+
+            </div>
+
+
+            <div
+                class="chart"
+                style="height:380px;"
+                id="salesRevenueChart"
+            >
+
+                <svg viewBox="0 0 1100 380">
+                </svg>
+
+            </div>
+
+
+            <div class="insight">
+
+                <div class="insight-icon">
+                    ↑
+                </div>
+
+                <div>
+
+                    Revenue accelerated significantly during
+                    2017 and remained close to
+                    <strong>R$1M per month</strong>
+                    through much of 2018.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY + MONTHLY TABLE -->
+
+        <section class="grid grid-1-1">
+
+
+            <!-- CATEGORY PERFORMANCE -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2 class="card-title">
+                            Category Performance
+                        </h2>
+
+                        <p class="card-description">
+                            Revenue contribution by category
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="chart"
+                    style="height:400px;"
+                    id="salesCategoryChart"
+                >
+
+                    <svg viewBox="0 0 800 400">
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+            <!-- MONTHLY PERFORMANCE -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2 class="card-title">
+                            Monthly Performance
+                        </h2>
+
+                        <p class="card-description">
+                            Highest-revenue months
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Month
+                                </th>
+
+                                <th>
+                                    Revenue
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="monthlyTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    class="insight"
+                    style="margin-top:20px;"
+                >
+
+                    <div class="insight-icon">
+                        $
+                    </div>
+
+                    <div>
+
+                        <strong>November 2017</strong>
+                        recorded the highest monthly
+                        revenue in the analyzed period.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- CATEGORY SUMMARY -->
+
+        <section
+            class="card"
+            style="margin-top:0;"
+        >
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2 class="card-title">
+                        Category Revenue Summary
+                    </h2>
+
+                    <p class="card-description">
+                        Revenue and share of the analyzed category sales
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Rank
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Revenue
+                            </th>
+
+                            <th>
+                                Share
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="categoryTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <span>
+            Olist E-commerce Analytics
+        </span>
+
+        <span>
+            Sales Analysis
+        </span>
+
+    </footer>
+
+
+</div>
+
+
+<script src="js/data.js"></script>
+
+<script src="js/sales.js"></script>
+
+
+</body>
+
+</html>

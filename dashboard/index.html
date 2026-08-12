@@ -31,7 +31,6 @@
 
         <div class="navbar-inner">
 
-
             <a
                 href="index.html"
                 class="brand"
@@ -100,23 +99,28 @@
 
         <!-- PAGE HEADER -->
 
-        <header class="page-header">
+        <header class="page-header overview-header">
 
             <div>
+
+                <div class="eyebrow">
+                    OLIST E-COMMERCE PERFORMANCE
+                </div>
 
                 <h1 class="page-title">
                     Executive Overview
                 </h1>
 
                 <p class="page-description">
-                    A high-level view of sales,
-                    customers and operational performance.
+                    Track revenue, customer satisfaction and
+                    operational performance across the marketplace.
                 </p>
 
             </div>
 
+            <div class="period-badge">
 
-            <div class="page-meta">
+                <span class="period-dot"></span>
 
                 Sep 2016 — Oct 2018
 
@@ -130,7 +134,7 @@
         <section class="kpi-grid">
 
 
-            <div class="kpi-card">
+            <div class="kpi-card kpi-revenue">
 
                 <div class="kpi-top">
 
@@ -155,7 +159,7 @@
             </div>
 
 
-            <div class="kpi-card">
+            <div class="kpi-card kpi-orders">
 
                 <div class="kpi-top">
 
@@ -180,7 +184,7 @@
             </div>
 
 
-            <div class="kpi-card">
+            <div class="kpi-card kpi-aov">
 
                 <div class="kpi-top">
 
@@ -205,7 +209,7 @@
             </div>
 
 
-            <div class="kpi-card">
+            <div class="kpi-card kpi-review">
 
                 <div class="kpi-top">
 
@@ -237,6 +241,8 @@
 
         <section class="grid grid-2-1">
 
+
+            <!-- REVENUE -->
 
             <div class="card">
 
@@ -274,6 +280,8 @@
             </div>
 
 
+            <!-- DELIVERY -->
+
             <div class="card">
 
                 <div class="card-header">
@@ -290,96 +298,79 @@
 
                     </div>
 
-                </div>
-
-
-                <div style="
-                    text-align:center;
-                    margin: 10px 0 20px;
-                ">
-
-                    <div style="
-                        font-size: 38px;
-                        font-weight: 750;
-                    ">
-                        53.47%
-                    </div>
-
-                    <div style="
-                        font-size: 12px;
-                        color: var(--text-secondary);
-                    ">
-                        delivered on time or early
-                    </div>
+                    <span class="badge badge-warning">
+                        1.72 pt gap
+                    </span>
 
                 </div>
 
 
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="width:53.47%"
-                    ></div>
-
-                </div>
+                <div class="delivery-summary">
 
 
-                <div style="
-                    margin-top:18px;
-                ">
+                    <div class="delivery-main">
 
-                    <div style="
-                        display:flex;
-                        justify-content:space-between;
-                        font-size:12px;
-                        margin-bottom:9px;
-                    ">
+                        <div class="delivery-score">
+                            4.29
+                        </div>
 
-                        <span>
-                            On Time / Early
-                        </span>
-
-                        <strong>
-                            88,653
-                        </strong>
+                        <div class="delivery-label">
+                            Average review · On time / early
+                        </div>
 
                     </div>
 
 
-                    <div style="
-                        display:flex;
-                        justify-content:space-between;
-                        font-size:12px;
-                        margin-bottom:18px;
-                    ">
+                    <div class="delivery-comparison">
 
-                        <span>
-                            Late
-                        </span>
+                        <div class="delivery-stat">
 
-                        <strong>
-                            77,002
-                        </strong>
+                            <span class="delivery-stat-label">
+                                On time / early
+                            </span>
+
+                            <strong>
+                                53.47%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="delivery-stat">
+
+                            <span class="delivery-stat-label">
+                                Late
+                            </span>
+
+                            <strong>
+                                46.53%
+                            </strong>
+
+                        </div>
 
                     </div>
+
 
                 </div>
 
 
-                <div class="insight">
+                <div class="delivery-gap">
 
-                    <div class="insight-icon">
+                    <div class="delivery-gap-icon">
                         !
                     </div>
 
                     <div>
 
-                        Late deliveries averaged
-                        <strong>2.57 / 5</strong>
-                        compared with
-                        <strong>4.29 / 5</strong>
-                        for on-time or early orders.
+                        <strong>
+                            1.72 point review gap
+                        </strong>
+
+                        <span>
+                            Late deliveries average 2.57/5
+                            compared with 4.29/5 for on-time
+                            or early deliveries.
+                        </span>
 
                     </div>
 
@@ -395,6 +386,8 @@
 
         <section class="grid grid-2-1">
 
+
+            <!-- CATEGORIES -->
 
             <div class="card">
 
@@ -428,6 +421,8 @@
             </div>
 
 
+            <!-- CUSTOMER SATISFACTION -->
+
             <div class="card">
 
                 <div class="card-header">
@@ -439,7 +434,7 @@
                         </h2>
 
                         <p class="card-description">
-                            Review performance
+                            Review performance by delivery status
                         </p>
 
                     </div>
@@ -451,89 +446,95 @@
                 </div>
 
 
-                <div style="
-                    text-align:center;
-                    margin:20px 0 28px;
-                ">
+                <div class="satisfaction-score">
 
-                    <div style="
-                        font-size:46px;
-                        font-weight:750;
-                    ">
+                    <div class="satisfaction-number">
                         4.09
                     </div>
 
-                    <div style="
-                        color:var(--text-secondary);
-                        font-size:12px;
-                    ">
+                    <div class="satisfaction-label">
                         Overall review score
                     </div>
 
                 </div>
 
 
-                <div style="
-                    margin-bottom:20px;
-                ">
+                <div class="satisfaction-comparison">
 
-                    <div style="
-                        display:flex;
-                        justify-content:space-between;
-                        font-size:12px;
-                        margin-bottom:7px;
-                    ">
 
-                        <span>
-                            On Time / Early
-                        </span>
+                    <div class="satisfaction-item">
 
-                        <strong>
-                            4.29 / 5
-                        </strong>
+                        <div class="satisfaction-item-top">
+
+                            <span>
+                                On Time / Early
+                            </span>
+
+                            <strong class="score-good">
+                                4.29 / 5
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar satisfaction-good"
+                                style="width:85.8%"
+                            ></div>
+
+                        </div>
 
                     </div>
 
-                    <div class="progress">
 
-                        <div
-                            class="progress-bar"
-                            style="width:85.8%"
-                        ></div>
+                    <div class="satisfaction-item">
+
+                        <div class="satisfaction-item-top">
+
+                            <span>
+                                Late
+                            </span>
+
+                            <strong class="score-warning">
+                                2.57 / 5
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar satisfaction-late"
+                                style="width:51.4%"
+                            ></div>
+
+                        </div>
 
                     </div>
+
 
                 </div>
 
 
-                <div>
+                <div class="satisfaction-insight">
 
-                    <div style="
-                        display:flex;
-                        justify-content:space-between;
-                        font-size:12px;
-                        margin-bottom:7px;
-                    ">
+                    <span class="satisfaction-insight-icon">
+                        ↓
+                    </span>
 
-                        <span>
-                            Late
-                        </span>
+                    <div>
 
                         <strong>
-                            2.57 / 5
+                            1.72 point difference
                         </strong>
 
-                    </div>
-
-                    <div class="progress">
-
-                        <div
-                            class="progress-bar"
-                            style="
-                                width:51.4%;
-                                background:#9ca3af;
-                            "
-                        ></div>
+                        <span>
+                            Customer ratings are substantially
+                            lower when orders arrive late.
+                        </span>
 
                     </div>
 
@@ -545,50 +546,86 @@
         </section>
 
 
-        <!-- GEOGRAPHY -->
+<!-- GEOGRAPHY -->
 
-        <section class="card">
+<section class="card geography-overview">
 
-            <div class="card-header">
+    <div class="card-header">
 
-                <div>
+        <div>
 
-                    <h2 class="card-title">
-                        Revenue by State
-                    </h2>
-
-                    <p class="card-description">
-                        Top Brazilian states by product revenue
-                    </p>
-
-                </div>
-
-
-                <a
-                    href="geography.html"
-                    class="card-action"
-                >
-                    View geography →
-                </a>
-
+            <div class="eyebrow">
+                GEOGRAPHIC PERFORMANCE
             </div>
 
+            <h2 class="card-title">
+                Revenue by State
+            </h2>
 
-            <div
-                class="chart chart-md"
-                id="stateChart"
-            >
+            <p class="card-description">
+                Top Brazilian states by product revenue
+            </p>
 
-                <svg viewBox="0 0 1000 280">
-                </svg>
-
-            </div>
-
-        </section>
+        </div>
 
 
-    </main>
+        <a
+            href="geography.html"
+            class="card-action"
+        >
+            Explore geography →
+        </a>
 
+    </div>
+
+
+    <div class="geography-highlight">
+
+        <div>
+
+            <span class="highlight-label">
+                Leading market
+            </span>
+
+            <strong>
+                São Paulo
+            </strong>
+
+            <span class="highlight-description">
+                R$5.03M in product revenue
+            </span>
+
+        </div>
+
+
+        <div class="highlight-share">
+
+            <strong>
+                37.0%
+            </strong>
+
+            <span>
+                of total revenue
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="chart chart-md"
+        id="stateChart"
+    >
+
+        <svg viewBox="0 0 1000 280">
+        </svg>
+
+    </div>
+
+</section>
+
+    <!-- FOOTER -->
 
     <footer class="footer">
 
@@ -607,7 +644,9 @@
 
 
 <script src="js/data.js"></script>
+
 <script src="js/overview.js"></script>
+
 
 </body>
 

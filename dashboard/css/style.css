@@ -175,22 +175,37 @@ body {
     font-size: 13px;
     font-weight: 500;
 
+    position: relative;
+
     transition:
         background 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        transform 0.2s ease;
 }
-
 
 .nav-link:hover {
     background: var(--surface-soft);
     color: var(--text);
-}
 
+    transform: translateY(-1px);
+}
 
 .nav-link.active {
     background: var(--primary-soft);
     color: var(--primary);
     font-weight: 600;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--primary);
 }
 
 
@@ -679,6 +694,48 @@ body {
     font-size: 13px;
 }
 
+/* =========================================
+   KPI ACCENTS
+========================================= */
+
+.kpi-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: var(--primary);
+}
+
+.kpi-revenue::before {
+    background: var(--primary);
+}
+
+.kpi-orders::before {
+    background: #7c3aed;
+}
+
+.kpi-aov::before {
+    background: #0891b2;
+}
+
+.kpi-review::before {
+    background: var(--success);
+}
+
+.kpi-card .kpi-value {
+    margin-top: 2px;
+}
 
 /* =========================================
    FOOTER
@@ -702,6 +759,56 @@ body {
     gap: 20px;
 }
 
+/* =========================================
+   OVERVIEW HEADER
+========================================= */
+
+.overview-header {
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: var(--primary);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 7px;
+}
+
+.period-badge {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.period-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+}
 
 /* =========================================
    RESPONSIVE
@@ -782,4 +889,251 @@ body {
         flex-direction: column;
     }
 
+}
+
+/* =========================================
+   CUSTOMER SATISFACTION
+========================================= */
+
+.satisfaction-score {
+    text-align: center;
+    padding: 20px 0 24px;
+}
+
+.satisfaction-number {
+    font-size: 46px;
+    line-height: 1;
+    font-weight: 750;
+    letter-spacing: -1.5px;
+}
+
+.satisfaction-label {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.satisfaction-comparison {
+    display: grid;
+    gap: 18px;
+}
+
+.satisfaction-item {
+    display: grid;
+    gap: 7px;
+}
+
+.satisfaction-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+}
+
+.satisfaction-item-top span {
+    color: var(--text-secondary);
+}
+
+.satisfaction-item-top strong {
+    font-size: 12px;
+}
+
+.score-good {
+    color: var(--success);
+}
+
+.score-warning {
+    color: var(--warning);
+}
+
+.satisfaction-good {
+    background: var(--success);
+}
+
+.satisfaction-late {
+    background: var(--warning);
+}
+
+.satisfaction-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 12px 14px;
+    background: var(--surface-soft);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.satisfaction-insight-icon {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background: var(--warning);
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.satisfaction-insight strong {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+
+.satisfaction-insight span {
+    display: block;
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   GEOGRAPHY OVERVIEW
+========================================= */
+
+.geography-overview {
+    overflow: hidden;
+}
+
+.geography-highlight {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 8px;
+
+    padding: 14px 16px;
+
+    background: var(--surface-soft);
+
+    border-radius: var(--radius-sm);
+}
+
+.highlight-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.8px;
+}
+
+.geography-highlight strong {
+    display: block;
+
+    font-size: 20px;
+
+    font-weight: 750;
+}
+
+.highlight-description {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+.highlight-share {
+    text-align: right;
+
+    padding-left: 20px;
+
+    border-left: 1px solid var(--border);
+}
+
+.highlight-share strong {
+    font-size: 20px;
+}
+
+.highlight-share span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+}
+
+/* =========================================
+   SALES PERIOD FILTER
+========================================= */
+
+.sales-filter {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 7px 10px 7px 12px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+.sales-filter-label {
+    font-size: 10px;
+
+    font-weight: 600;
+
+    color: var(--text-secondary);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
+
+.sales-filter-select {
+    appearance: none;
+
+    border: none;
+
+    outline: none;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    padding-right: 4px;
+}
+
+
+.sales-filter-select:focus {
+    outline: none;
 }

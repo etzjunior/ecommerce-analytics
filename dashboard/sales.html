@@ -104,6 +104,10 @@
 
             <div>
 
+                <div class="eyebrow">
+                    SALES PERFORMANCE
+                </div>
+
                 <h1 class="page-title">
                     Sales Analysis
                 </h1>
@@ -116,8 +120,40 @@
             </div>
 
 
-            <div class="page-meta">
-                Sep 2016 — Oct 2018
+            <!-- PERIOD FILTER -->
+
+            <div class="sales-filter">
+
+                <label
+                    for="salesPeriodFilter"
+                    class="sales-filter-label"
+                >
+                    Analysis period
+                </label>
+
+                <select
+                    id="salesPeriodFilter"
+                    class="sales-filter-select"
+                >
+
+                    <option value="all">
+                        All time
+                    </option>
+
+                    <option value="2016">
+                        2016
+                    </option>
+
+                    <option value="2017">
+                        2017
+                    </option>
+
+                    <option value="2018">
+                        2018
+                    </option>
+
+                </select>
+
             </div>
 
         </header>
@@ -128,7 +164,9 @@
         <section class="kpi-grid">
 
 
-            <div class="kpi-card">
+            <!-- REVENUE -->
+
+            <div class="kpi-card kpi-revenue">
 
                 <div class="kpi-top">
 
@@ -142,18 +180,26 @@
 
                 </div>
 
-                <div class="kpi-value">
+                <div
+                    class="kpi-value"
+                    id="salesTotalRevenue"
+                >
                     R$13.59M
                 </div>
 
-                <div class="kpi-footer kpi-positive">
-                    ● Product revenue
+                <div
+                    class="kpi-footer kpi-positive"
+                    id="salesRevenueFooter"
+                >
+                    ● All-time product revenue
                 </div>
 
             </div>
 
 
-            <div class="kpi-card">
+            <!-- ORDERS -->
+
+            <div class="kpi-card kpi-orders">
 
                 <div class="kpi-top">
 
@@ -172,13 +218,15 @@
                 </div>
 
                 <div class="kpi-footer kpi-neutral">
-                    ● Orders analyzed
+                    ● All periods
                 </div>
 
             </div>
 
 
-            <div class="kpi-card">
+            <!-- AOV -->
+
+            <div class="kpi-card kpi-aov">
 
                 <div class="kpi-top">
 
@@ -197,13 +245,15 @@
                 </div>
 
                 <div class="kpi-footer kpi-neutral">
-                    ● Revenue per order
+                    ● Overall average
                 </div>
 
             </div>
 
 
-            <div class="kpi-card">
+            <!-- PEAK -->
+
+            <div class="kpi-card kpi-review">
 
                 <div class="kpi-top">
 
@@ -217,11 +267,17 @@
 
                 </div>
 
-                <div class="kpi-value">
+                <div
+                    class="kpi-value"
+                    id="salesPeakRevenue"
+                >
                     R$1.01M
                 </div>
 
-                <div class="kpi-footer kpi-positive">
+                <div
+                    class="kpi-footer kpi-positive"
+                    id="salesPeakMonth"
+                >
                     ● November 2017
                 </div>
 
@@ -233,7 +289,10 @@
 
         <!-- REVENUE TREND -->
 
-        <section class="card" style="margin-bottom:18px;">
+        <section
+            class="card"
+            style="margin-bottom:18px;"
+        >
 
             <div class="card-header">
 
@@ -250,8 +309,11 @@
                 </div>
 
 
-                <span class="badge badge-blue">
-                    Revenue trend
+                <span
+                    class="badge badge-blue"
+                    id="salesChartBadge"
+                >
+                    All time
                 </span>
 
             </div>
@@ -275,7 +337,7 @@
                     ↑
                 </div>
 
-                <div>
+                <div id="salesRevenueInsight">
 
                     Revenue accelerated significantly during
                     2017 and remained close to
@@ -389,7 +451,7 @@
                         $
                     </div>
 
-                    <div>
+                    <div id="monthlyTableInsight">
 
                         <strong>November 2017</strong>
                         recorded the highest monthly
@@ -490,9 +552,9 @@
 </div>
 
 
-<script src="js/data.js"></script>
+<script src="js/data.js?v=2"></script>
 
-<script src="js/sales.js"></script>
+<script src="js/sales.js?v=2"></script>
 
 
 </body>

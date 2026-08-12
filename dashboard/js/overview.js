@@ -18,9 +18,7 @@ function formatMillions(value) {
 
 function formatThousands(value) {
 
-    return value.toLocaleString(
-        "en-US"
-    );
+    return value.toLocaleString("en-US");
 
 }
 
@@ -30,9 +28,7 @@ function formatThousands(value) {
 ========================================= */
 
 const revenueContainer =
-    document.querySelector(
-        "#revenueChart svg"
-    );
+    document.querySelector("#revenueChart svg");
 
 
 if (revenueContainer) {
@@ -41,12 +37,10 @@ if (revenueContainer) {
     const height = 320;
 
     const padding = {
-
         top: 20,
         right: 30,
         bottom: 45,
         left: 60
-
     };
 
 
@@ -100,7 +94,9 @@ if (revenueContainer) {
     }
 
 
-    /* GRID LINES */
+    /* =========================================
+       GRID LINES
+    ========================================= */
 
     for (
         let i = 0;
@@ -111,6 +107,7 @@ if (revenueContainer) {
         const value =
             maxRevenue *
             (i / 4);
+
 
         const yPosition =
             y(value);
@@ -144,7 +141,9 @@ if (revenueContainer) {
     }
 
 
-    /* AREA */
+    /* =========================================
+       REVENUE POINTS
+    ========================================= */
 
     const points =
         monthlyRevenue
@@ -154,6 +153,45 @@ if (revenueContainer) {
             )
             .join(" ");
 
+
+    /* =========================================
+       GRADIENT
+    ========================================= */
+
+    revenueContainer.innerHTML += `
+
+        <defs>
+
+            <linearGradient
+                id="revenueGradient"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+            >
+
+                <stop
+                    offset="0%"
+                    stop-color="#2563eb"
+                    stop-opacity="0.18"
+                />
+
+                <stop
+                    offset="100%"
+                    stop-color="#2563eb"
+                    stop-opacity="0"
+                />
+
+            </linearGradient>
+
+        </defs>
+
+    `;
+
+
+    /* =========================================
+       AREA
+    ========================================= */
 
     const areaPoints =
 
@@ -168,13 +206,15 @@ if (revenueContainer) {
 
         <polygon
             points="${areaPoints}"
-            fill="#eff6ff"
+            fill="url(#revenueGradient)"
         />
 
     `;
 
 
-    /* LINE */
+    /* =========================================
+       LINE
+    ========================================= */
 
     revenueContainer.innerHTML += `
 
@@ -190,7 +230,9 @@ if (revenueContainer) {
     `;
 
 
-    /* POINTS */
+    /* =========================================
+       DATA POINTS
+    ========================================= */
 
     monthlyRevenue.forEach(
         (item, index) => {
@@ -200,7 +242,7 @@ if (revenueContainer) {
                 <circle
                     cx="${x(index)}"
                     cy="${y(item.revenue)}"
-                    r="4"
+                    r="3.5"
                     fill="#ffffff"
                     stroke="#2563eb"
                     stroke-width="2"
@@ -212,7 +254,60 @@ if (revenueContainer) {
     );
 
 
-    /* X AXIS */
+    /* =========================================
+       PEAK REVENUE
+    ========================================= */
+
+    const peakIndex =
+        monthlyRevenue.reduce(
+            (
+                best,
+                item,
+                index
+            ) =>
+
+                item.revenue >
+                monthlyRevenue[best].revenue
+
+                    ? index
+                    : best,
+
+            0
+        );
+
+
+    const peak =
+        monthlyRevenue[peakIndex];
+
+
+    revenueContainer.innerHTML += `
+
+        <circle
+            cx="${x(peakIndex)}"
+            cy="${y(peak.revenue)}"
+            r="6"
+            fill="#ffffff"
+            stroke="#2563eb"
+            stroke-width="3"
+        />
+
+        <text
+            x="${x(peakIndex)}"
+            y="${y(peak.revenue) - 14}"
+            text-anchor="middle"
+            font-size="11"
+            font-weight="600"
+            fill="#2563eb"
+        >
+            Peak · ${formatMillions(peak.revenue)}
+        </text>
+
+    `;
+
+
+    /* =========================================
+       X AXIS
+    ========================================= */
 
     monthlyRevenue.forEach(
         (item, index) => {
@@ -241,6 +336,24 @@ if (revenueContainer) {
         }
     );
 
+
+    /* =========================================
+       BASELINE
+    ========================================= */
+
+    revenueContainer.innerHTML += `
+
+        <line
+            x1="${padding.left}"
+            y1="${padding.top + chartHeight}"
+            x2="${width - padding.right}"
+            y2="${padding.top + chartHeight}"
+            stroke="#d1d5db"
+            stroke-width="1"
+        />
+
+    `;
+
 }
 
 
@@ -249,9 +362,7 @@ if (revenueContainer) {
 ========================================= */
 
 const categoryContainer =
-    document.querySelector(
-        "#categoryChart svg"
-    );
+    document.querySelector("#categoryChart svg");
 
 
 if (categoryContainer) {
@@ -371,9 +482,7 @@ if (categoryContainer) {
 ========================================= */
 
 const stateContainer =
-    document.querySelector(
-        "#stateChart svg"
-    );
+    document.querySelector("#stateChart svg");
 
 
 if (stateContainer) {

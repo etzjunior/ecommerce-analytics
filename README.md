@@ -1,85 +1,56 @@
-# Olist E-commerce Analytics Dashboard
+# Olist E-Commerce Analytics Dashboard
 
-An interactive e-commerce analytics dashboard built using the Olist Brazilian E-commerce dataset.
+An interactive e-commerce analytics dashboard built using the Olist Brazilian E-Commerce dataset.
 
-The project analyzes sales performance, customer behavior, delivery performance, product categories, and customer satisfaction to identify useful business insights.
+The project transforms raw transactional data into a multi-page analytics dashboard covering sales performance, customer satisfaction, delivery performance, and geographic revenue distribution.
 
 ## Dashboard
 
-The dashboard provides a visual overview of:
+The dashboard provides four main analytical views:
 
-- Revenue trends over time
-- Delivery performance
-- Top product categories
-- Customer satisfaction
-- Revenue by Brazilian state
+- **Executive Overview** — Overall revenue, orders, average order value, reviews, delivery performance and category performance.
+- **Sales Analysis** — Revenue trends, yearly performance, monthly revenue and category contribution.
+- **Customers & Delivery** — Customer review distribution and the relationship between delivery performance and customer satisfaction.
+- **Geographic Analysis** — Revenue, customers and order activity across Brazilian states.
 
 ## Key Insights
 
-### Revenue
+Some of the main findings include:
 
-The dataset generated approximately **R$13.59M** in product revenue across **99,441 orders**.
-
-The average order value was approximately **R$136.68**.
-
-Revenue increased substantially throughout 2017 and reached its highest levels during early-to-mid 2018.
-
-### Delivery Performance
-
-Approximately **53.47%** of orders were delivered on time or early, while **46.53%** were late.
-
-Delivery performance showed a strong relationship with customer satisfaction:
-
-| Delivery Status | Average Review |
-|---|---:|
-| On Time / Early | 4.29 / 5 |
-| Late | 2.57 / 5 |
-
-This indicates that late delivery is associated with substantially lower customer review scores.
-
-### Customer Satisfaction
-
-The overall average review score was **4.09 / 5**.
-
-Approximately **77.07%** of reviews were positive, defined as ratings of 4 or 5 stars.
-
-### Product Categories
-
-The highest-revenue product categories included:
-
-1. Health & Beauty — R$1.26M
-2. Watches & Gifts — R$1.21M
-3. Bed / Bath / Table — R$1.04M
-4. Sports & Leisure — R$0.99M
-5. Computers & Accessories — R$0.91M
-
-### Revenue by State
-
-São Paulo generated the highest product revenue at approximately **R$5.03M**, followed by:
-
-- Rio de Janeiro — R$1.82M
-- Minas Gerais — R$1.59M
-- Paraná — R$0.68M
-- Rio Grande do Sul — R$0.68M
-
-This highlights a strong concentration of revenue in Brazil's southeastern states.
-
-## Dataset
-
-The project uses the **Brazilian Olist E-commerce Dataset**, containing information about orders, customers, products, payments, reviews, sellers, and geographic locations.
-
-The original raw dataset is intentionally excluded from this repository because of its size. Only the processed analytical datasets required for the dashboard are included.
+- Total product revenue of approximately **R$13.59M**
+- **99,441 orders** analyzed
+- Average order value of approximately **R$136.68**
+- Overall customer review score of **4.09 / 5**
+- **77.07%** of reviews were 4–5 stars
+- Orders delivered on time or early received an average review of **4.29 / 5**
+- Late deliveries received an average review of **2.57 / 5**
+- São Paulo was the leading state by product revenue
+- Health & Beauty was the highest-revenue category in the analyzed category data
 
 ## Technologies
 
-- Python
-- Pandas
-- Jupyter Notebook
 - HTML
 - CSS
 - JavaScript
+- Python
+- Pandas
 - SVG
-- Git / GitHub
+- Git & GitHub
+
+## Data
+
+The project uses the **Olist Brazilian E-Commerce dataset**.
+
+Raw data is processed with Python/Pandas into analytical datasets used by the dashboard.
+
+Processed datasets include:
+
+- Monthly revenue
+- Yearly sales
+- Category sales
+- Yearly category sales
+- Delivery and review analysis
+- State revenue
 
 ## Project Structure
 
@@ -87,16 +58,30 @@ The original raw dataset is intentionally excluded from this repository because 
 ecommerce-analytics/
 │
 ├── dashboard/
-│   └── index.html
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── data.js
+│   │   ├── overview.js
+│   │   ├── sales.js
+│   │   ├── customers.js
+│   │   └── geography.js
+│   ├── index.html
+│   ├── sales.html
+│   ├── customers.html
+│   └── geography.html
 │
 ├── data/
 │   └── processed/
 │       ├── category_sales.csv
+│       ├── category_yearly_sales.csv
 │       ├── delivery_reviews.csv
 │       ├── monthly_revenue.csv
-│       └── state_revenue.csv
+│       ├── state_revenue.csv
+│       └── yearly_sales.csv
 │
-├── analysis/
+├── scripts/
+│   └── generate_sales_yearly.py
 │
-├── .gitignore
-└── README.md
+├── README.md
+└── .gitignore

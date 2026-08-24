@@ -282,7 +282,7 @@
 
             <!-- DELIVERY -->
 
-            <div class="card">
+            <div class="card delivery-card">
 
                 <div class="card-header">
 
@@ -305,27 +305,31 @@
                 </div>
 
 
-                <div class="delivery-summary">
+                <!-- MAIN DELIVERY SCORE -->
 
+                <div class="delivery-main-score">
 
-                    <div class="delivery-main">
-
-                        <div class="delivery-score">
-                            4.29
-                        </div>
-
-                        <div class="delivery-label">
-                            Average review · On time / early
-                        </div>
-
+                    <div class="delivery-score">
+                        4.29
                     </div>
 
+                    <div class="delivery-label">
+                        Average review · On time / early
+                    </div>
 
-                    <div class="delivery-comparison">
+                </div>
 
-                        <div class="delivery-stat">
 
-                            <span class="delivery-stat-label">
+                <!-- DELIVERY RATES -->
+
+                <div class="delivery-rates">
+
+
+                    <div class="delivery-rate">
+
+                        <div class="delivery-rate-header">
+
+                            <span>
                                 On time / early
                             </span>
 
@@ -335,10 +339,23 @@
 
                         </div>
 
+                        <div class="delivery-track">
 
-                        <div class="delivery-stat">
+                            <div
+                                class="delivery-fill delivery-fill-good"
+                                style="width:53.47%"
+                            ></div>
 
-                            <span class="delivery-stat-label">
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-rate">
+
+                        <div class="delivery-rate-header">
+
+                            <span>
                                 Late
                             </span>
 
@@ -348,28 +365,38 @@
 
                         </div>
 
+                        <div class="delivery-track">
+
+                            <div
+                                class="delivery-fill delivery-fill-late"
+                                style="width:46.53%"
+                            ></div>
+
+                        </div>
+
                     </div>
 
 
                 </div>
 
 
-                <div class="delivery-gap">
+                <!-- KEY INSIGHT -->
 
-                    <div class="delivery-gap-icon">
+                <div class="delivery-insight">
+
+                    <div class="delivery-insight-icon">
                         !
                     </div>
 
-                    <div>
+                    <div class="delivery-insight-content">
 
                         <strong>
-                            1.72 point review gap
+                            Late deliveries impact satisfaction
                         </strong>
 
                         <span>
-                            Late deliveries average 2.57/5
-                            compared with 4.29/5 for on-time
-                            or early deliveries.
+                            Late orders average 2.57/5 compared with
+                            4.29/5 for on-time or early orders.
                         </span>
 
                     </div>
@@ -546,98 +573,102 @@
         </section>
 
 
-<!-- GEOGRAPHY -->
+        <!-- GEOGRAPHY -->
 
-<section class="card geography-overview">
+        <section class="card geography-overview">
 
-    <div class="card-header">
+            <div class="card-header">
 
-        <div>
+                <div>
 
-            <div class="eyebrow">
-                GEOGRAPHIC PERFORMANCE
+                    <div class="eyebrow">
+                        GEOGRAPHIC PERFORMANCE
+                    </div>
+
+                    <h2 class="card-title">
+                        Revenue by State
+                    </h2>
+
+                    <p class="card-description">
+                        Top Brazilian states by product revenue
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="geography.html"
+                    class="card-action"
+                >
+                    Explore geography →
+                </a>
+
             </div>
 
-            <h2 class="card-title">
-                Revenue by State
-            </h2>
 
-            <p class="card-description">
-                Top Brazilian states by product revenue
-            </p>
+            <div class="geography-highlight">
 
-        </div>
+                <div>
 
+                    <span class="highlight-label">
+                        Leading market
+                    </span>
 
-        <a
-            href="geography.html"
-            class="card-action"
-        >
-            Explore geography →
-        </a>
+                    <strong>
+                        São Paulo
+                    </strong>
 
-    </div>
+                    <span class="highlight-description">
+                        R$5.03M in product revenue
+                    </span>
 
-
-    <div class="geography-highlight">
-
-        <div>
-
-            <span class="highlight-label">
-                Leading market
-            </span>
-
-            <strong>
-                São Paulo
-            </strong>
-
-            <span class="highlight-description">
-                R$5.03M in product revenue
-            </span>
-
-        </div>
+                </div>
 
 
-        <div class="highlight-share">
+                <div class="highlight-share">
 
-            <strong>
-                37.0%
-            </strong>
+                    <strong>
+                        37.0%
+                    </strong>
+
+                    <span>
+                        of total revenue
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="chart chart-md"
+                id="stateChart"
+            >
+
+                <svg viewBox="0 0 1000 280">
+                </svg>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
 
             <span>
-                of total revenue
+                Olist E-commerce Analytics
             </span>
 
-        </div>
+            <span>
+                Portfolio Data Analytics Project
+            </span>
 
-    </div>
+        </footer>
 
 
-    <div
-        class="chart chart-md"
-        id="stateChart"
-    >
-
-        <svg viewBox="0 0 1000 280">
-        </svg>
-
-    </div>
-
-</section>
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <span>
-            Olist E-commerce Analytics
-        </span>
-
-        <span>
-            Portfolio Data Analytics Project
-        </span>
-
-    </footer>
+    </main>
 
 
 </div>

@@ -345,12 +345,13 @@ const stateTable =
 
 if (stateTable) {
 
+    /*
+       Use the overall product revenue rather
+       than the sum of the displayed top 10 states.
+    */
+
     const totalRevenue =
-        stateRevenue.reduce(
-            (sum, item) =>
-                sum + item.revenue,
-            0
-        );
+        kpis.totalRevenue;
 
 
     stateRevenue.forEach(

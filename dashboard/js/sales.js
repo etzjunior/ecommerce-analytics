@@ -7,11 +7,28 @@
    HELPERS
 ========================================= */
 
-function salesFormatMillions(value) {
+function salesFormatMoney(value) {
+
+    if (Math.abs(value) >= 1000000) {
+
+        return "R$" +
+            (value / 1000000).toFixed(2) +
+            "M";
+
+    }
+
+
+    if (Math.abs(value) >= 1000) {
+
+        return "R$" +
+            (value / 1000).toFixed(1) +
+            "K";
+
+    }
+
 
     return "R$" +
-        (value / 1000000).toFixed(2) +
-        "M";
+        value.toFixed(2);
 
 }
 
@@ -22,7 +39,7 @@ function salesGetYear(month) {
         String(month).match(/20\d{2}/);
 
     return match
-        ? match[0]
+        ? Number(match[0])
         : null;
 
 }
@@ -53,8 +70,77 @@ function getFilteredRevenue() {
     return monthlyRevenue.filter(
         item =>
             salesGetYear(item.month) ===
-            selectedPeriod
+            Number(selectedPeriod)
     );
+
+}
+
+
+function getSelectedYearData() {
+
+    if (selectedPeriod === "all") {
+
+        return null;
+
+    }
+
+
+    return yearlySales.find(
+        item =>
+            item.year ===
+            Number(selectedPeriod)
+    );
+
+}
+
+
+function getSelectedCategories() {
+
+    if (selectedPeriod === "all") {
+
+        return [...categoryRevenue]
+            .map(item => ({
+                ...item
+            }));
+
+    }
+
+
+    return categoryYearlySales
+        .filter(
+            item =>
+                item.year ===
+                Number(selectedPeriod)
+        )
+        .map(item => ({
+
+            category:
+                formatCategoryName(
+                    item.category
+                ),
+
+            revenue:
+                item.revenue,
+
+            percentage:
+                item.percentage
+
+        }));
+
+}
+
+
+function formatCategoryName(
+    category
+) {
+
+    return category
+
+        .replace(/_/g, " ")
+
+        .replace(/\b\w/g, letter =>
+            letter.toUpperCase()
+        );
 
 }
 
@@ -67,12 +153,44 @@ function updateSalesKPIs(
     filteredRevenue
 ) {
 
-    const totalRevenue =
-        filteredRevenue.reduce(
-            (sum, item) =>
-                sum + item.revenue,
-            0
-        );
+    const yearData =
+        getSelectedYearData();
+
+
+    let totalRevenue;
+
+    let totalOrders;
+
+    let aov;
+
+
+    if (yearData) {
+
+        totalRevenue =
+            yearData.revenue;
+
+        totalOrders =
+            yearData.orders;
+
+        aov =
+            yearData.aov;
+
+    } else {
+
+        totalRevenue =
+            filteredRevenue.reduce(
+                (sum, item) =>
+                    sum + item.revenue,
+                0
+            );
+
+        totalOrders =
+            kpis.totalOrders;
+
+        aov =
+            kpis.averageOrderValue;
+
+    }
 
 
     const peak =
@@ -81,7 +199,6 @@ function updateSalesKPIs(
 
                 item.revenue >
                 best.revenue
-
                     ? item
                     : best,
 
@@ -101,6 +218,30 @@ function updateSalesKPIs(
         );
 
 
+    const ordersElement =
+        document.querySelector(
+            ".kpi-orders .kpi-value"
+        );
+
+
+    const aovElement =
+        document.querySelector(
+            ".kpi-aov .kpi-value"
+        );
+
+
+    const ordersFooter =
+        document.querySelector(
+            ".kpi-orders .kpi-footer"
+        );
+
+
+    const aovFooter =
+        document.querySelector(
+            ".kpi-aov .kpi-footer"
+        );
+
+
     const peakRevenueElement =
         document.getElementById(
             "salesPeakRevenue"
@@ -113,13 +254,10 @@ function updateSalesKPIs(
         );
 
 
-    if (
-        totalRevenueElement &&
-        filteredRevenue.length
-    ) {
+    if (totalRevenueElement) {
 
         totalRevenueElement.textContent =
-            salesFormatMillions(
+            salesFormatMoney(
                 totalRevenue
             );
 
@@ -138,13 +276,56 @@ function updateSalesKPIs(
     }
 
 
+    if (ordersElement) {
+
+        ordersElement.textContent =
+            totalOrders.toLocaleString(
+                "en-US"
+            );
+
+    }
+
+
+    if (ordersFooter) {
+
+        ordersFooter.textContent =
+            selectedPeriod === "all"
+
+                ? "● All periods"
+
+                : `● ${selectedPeriod}`;
+
+    }
+
+
+    if (aovElement) {
+
+        aovElement.textContent =
+            "R$" +
+            aov.toFixed(2);
+
+    }
+
+
+    if (aovFooter) {
+
+        aovFooter.textContent =
+            selectedPeriod === "all"
+
+                ? "● Overall average"
+
+                : `● ${selectedPeriod} average`;
+
+    }
+
+
     if (
         peakRevenueElement &&
         peak
     ) {
 
         peakRevenueElement.textContent =
-            salesFormatMillions(
+            salesFormatMoney(
                 peak.revenue
             );
 
@@ -200,11 +381,18 @@ function updateRevenueInsight(
 
                 item.revenue >
                 best.revenue
-
                     ? item
                     : best,
 
             filteredRevenue[0]
+        );
+
+
+    const totalRevenue =
+        filteredRevenue.reduce(
+            (sum, item) =>
+                sum + item.revenue,
+            0
         );
 
 
@@ -225,19 +413,15 @@ function updateRevenueInsight(
 
             <strong>${selectedPeriod}</strong>
             generated
-            <strong>${salesFormatMillions(
-                filteredRevenue.reduce(
-                    (sum, item) =>
-                        sum + item.revenue,
-                    0
-                )
+            <strong>${salesFormatMoney(
+                totalRevenue
             )}</strong>
             in product revenue.
 
             The highest month was
             <strong>${peak.month}</strong>
             at
-            <strong>${salesFormatMillions(
+            <strong>${salesFormatMoney(
                 peak.revenue
             )}</strong>.
 
@@ -366,9 +550,7 @@ function renderRevenueChart(
     }
 
 
-    /* =========================================
-       GRID
-    ========================================= */
+    /* GRID */
 
     for (
         let i = 0;
@@ -403,9 +585,7 @@ function renderRevenueChart(
                 font-size="11"
                 fill="#9ca3af"
             >
-                R$${(
-                    value / 1000000
-                ).toFixed(1)}M
+                ${salesFormatMoney(value)}
             </text>
 
         `;
@@ -413,9 +593,7 @@ function renderRevenueChart(
     }
 
 
-    /* =========================================
-       POINTS
-    ========================================= */
+    /* POINTS */
 
     const points =
         filteredRevenue
@@ -426,9 +604,7 @@ function renderRevenueChart(
             .join(" ");
 
 
-    /* =========================================
-       AREA
-    ========================================= */
+    /* AREA */
 
     const areaPoints =
 
@@ -475,9 +651,7 @@ function renderRevenueChart(
     `;
 
 
-    /* =========================================
-       LINE
-    ========================================= */
+    /* LINE */
 
     salesRevenueContainer.innerHTML += `
 
@@ -493,9 +667,7 @@ function renderRevenueChart(
     `;
 
 
-    /* =========================================
-       DATA POINTS
-    ========================================= */
+    /* POINTS */
 
     filteredRevenue.forEach(
         (item, index) => {
@@ -517,9 +689,7 @@ function renderRevenueChart(
     );
 
 
-    /* =========================================
-       PEAK
-    ========================================= */
+    /* PEAK */
 
     const peakIndex =
         filteredRevenue.reduce(
@@ -531,7 +701,6 @@ function renderRevenueChart(
 
                 item.revenue >
                 filteredRevenue[best].revenue
-
                     ? index
                     : best,
 
@@ -562,7 +731,7 @@ function renderRevenueChart(
             font-weight="600"
             fill="#2563eb"
         >
-            Peak · ${salesFormatMillions(
+            Peak · ${salesFormatMoney(
                 peak.revenue
             )}
         </text>
@@ -570,9 +739,7 @@ function renderRevenueChart(
     `;
 
 
-    /* =========================================
-       X AXIS
-    ========================================= */
+    /* X AXIS */
 
     const step =
         filteredRevenue.length > 18
@@ -609,9 +776,7 @@ function renderRevenueChart(
     );
 
 
-    /* =========================================
-       BASELINE
-    ========================================= */
+    /* BASELINE */
 
     salesRevenueContainer.innerHTML += `
 
@@ -651,6 +816,17 @@ function renderCategoryChart() {
     salesCategoryContainer.innerHTML = "";
 
 
+    const categories =
+        getSelectedCategories();
+
+
+    if (!categories.length) {
+
+        return;
+
+    }
+
+
     const width = 800;
 
     const left = 175;
@@ -667,13 +843,13 @@ function renderCategoryChart() {
 
     const maxRevenue =
         Math.max(
-            ...categoryRevenue.map(
+            ...categories.map(
                 item => item.revenue
             )
         );
 
 
-    categoryRevenue.forEach(
+    categories.forEach(
         (item, index) => {
 
             const y =
@@ -729,7 +905,7 @@ function renderCategoryChart() {
                     font-size="11"
                     fill="#6b7280"
                 >
-                    ${salesFormatMillions(
+                    ${salesFormatMoney(
                         item.revenue
                     )}
                 </text>
@@ -792,7 +968,7 @@ function renderMonthlyTable(
 
                     <td>
 
-                        ${salesFormatMillions(
+                        ${salesFormatMoney(
                             item.revenue
                         )}
 
@@ -830,7 +1006,11 @@ function renderCategoryTable() {
     categoryTable.innerHTML = "";
 
 
-    categoryRevenue.forEach(
+    const categories =
+        getSelectedCategories();
+
+
+    categories.forEach(
         (item, index) => {
 
             categoryTable.innerHTML += `
@@ -846,7 +1026,7 @@ function renderCategoryTable() {
                     </td>
 
                     <td>
-                        ${salesFormatMillions(
+                        ${salesFormatMoney(
                             item.revenue
                         )}
                     </td>

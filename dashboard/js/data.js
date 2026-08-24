@@ -267,3 +267,146 @@ const kpis = {
     averageReview: 4.09
 
 };
+
+/* =========================================
+   YEARLY SALES
+========================================= */
+
+const yearlySales = [
+
+    {
+        year: 2016,
+        revenue: 40470.98,
+        orders: 267,
+        aov: 151.576704
+    },
+
+    {
+        year: 2017,
+        revenue: 5962902.01,
+        orders: 43428,
+        aov: 137.305471
+    },
+
+    {
+        year: 2018,
+        revenue: 7218125.12,
+        orders: 52783,
+        aov: 136.750945
+    }
+
+];
+
+
+/* =========================================
+   CATEGORY SALES BY YEAR
+========================================= */
+
+const categoryYearlySales = [
+
+    {
+        year: 2016,
+        category: "furniture_decor",
+        revenue: 5690.52,
+        percentage: 14.060742
+    },
+
+    {
+        year: 2016,
+        category: "perfumery",
+        revenue: 4829.10,
+        percentage: 11.932254
+    },
+
+    {
+        year: 2016,
+        category: "toys",
+        revenue: 4106.50,
+        percentage: 10.146777
+    },
+
+    {
+        year: 2016,
+        category: "consoles_games",
+        revenue: 3619.36,
+        percentage: 8.943099
+    },
+
+    {
+        year: 2016,
+        category: "health_beauty",
+        revenue: 3574.22,
+        percentage: 8.831563
+    },
+
+    {
+        year: 2017,
+        category: "bed_bath_table",
+        revenue: 490596.92,
+        percentage: 8.227486
+    },
+
+    {
+        year: 2017,
+        category: "watches_gifts",
+        revenue: 475610.71,
+        percentage: 7.976162
+    },
+
+    {
+        year: 2017,
+        category: "health_beauty",
+        revenue: 473833.00,
+        percentage: 7.946349
+    },
+
+    {
+        year: 2017,
+        category: "sports_leisure",
+        revenue: 435674.14,
+        percentage: 7.306411
+    },
+
+    {
+        year: 2017,
+        category: "computers_accessories",
+        revenue: 391786.29,
+        percentage: 6.570396
+    },
+
+    {
+        year: 2018,
+        category: "health_beauty",
+        revenue: 755724.50,
+        percentage: 10.469817
+    },
+
+    {
+        year: 2018,
+        category: "watches_gifts",
+        revenue: 687855.20,
+        percentage: 9.529555
+    },
+
+    {
+        year: 2018,
+        category: "bed_bath_table",
+        revenue: 532358.85,
+        percentage: 7.375306
+    },
+
+    {
+        year: 2018,
+        category: "sports_leisure",
+        revenue: 517166.26,
+        percentage: 7.164828
+    },
+
+    {
+        year: 2018,
+        category: "computers_accessories",
+        revenue: 496269.30,
+        percentage: 6.875321
+    }
+
+];

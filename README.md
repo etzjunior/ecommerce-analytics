@@ -4,6 +4,10 @@ An interactive e-commerce analytics dashboard built using the Olist Brazilian E-
 
 The project transforms raw transactional data into a multi-page analytics dashboard covering sales performance, customer satisfaction, delivery performance, and geographic revenue distribution.
 
+## 🚀 Live Demo
+
+👉 [View the live dashboard](https://etzjunior.github.io/ecommerce-analytics/dashboard/)
+
 ## Dashboard
 
 The dashboard provides four main analytical views:
